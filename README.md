@@ -117,6 +117,12 @@ In a simple linear queue, after elements are removed from the front, those posit
 
 A circular queue solves this problem by allowing rear to wrap around to the beginning of the array and reuse those positions.
 
+Complexity Analysis
+Operation	Time Complexity	Space Complexity
+push()	\(\mathcal{O}(1)\)	\(\mathcal{O}(1)\)
+pop()	\(\mathcal{O}(1)\)	\(\mathcal{O}(1)\)
+peek()	\(\mathcal{O}(1)\)	\(\mathcal{O}(1)\)
+Overall Space	—	\(\mathcal{O}(N)\) (where N is array capacity)
 2. Time Complexity
 ENQUEUE → O(1)
 DEQUEUE → O(1)
