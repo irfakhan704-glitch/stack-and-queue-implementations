@@ -211,6 +211,87 @@ On Windows, you can run:
 stack.exe
 Circular Queue
 Open a terminal in the Q2_Circular_Queue folder and run:
+python
+class CircularQueue:
+    def __init__(self, size):
+        self.size = size
+        self.queue = [None] * size
+        self.front = -1
+        self.rear = -1
+
+    def is_full(self):
+        if (self.front == 0 and self.rear == self.size - 1) or (self.front == self.rear + 1):
+            return True
+        return False
+
+    def is_empty(self):
+        if self.front == -1:
+            return True
+        return False
+
+    def enqueue(self, data):
+        if self.is_full():
+            print("Queue is full!")
+        else:
+            if self.front == -1:
+                self.front = 0
+            self.rear = (self.rear + 1) % self.size
+            self.queue[self.rear] = data
+            print(f"Inserted -> {data}")
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty!")
+            return None
+        else:
+            temp = self.queue[self.front]
+            if self.front == self.rear:
+                self.front = -1
+                self.rear = -1
+            else:
+                self.front = (self.front + 1) % self.size
+            return temp
+
+    def display(self):
+        if self.is_empty():
+            print("Empty Queue")
+        else:
+            print(f"Front -> {self.front}")
+            print("Items -> ", end="")
+            
+            index = self.front
+            while True:
+                print(self.queue[index], end=" ")
+                if index == self.rear:
+                    break
+                index = (index + 1) % self.size
+            print(f"\nRear -> {self.rear}")
+
+
+# Driver Code
+if __name__ == "__main__":
+    cq = CircularQueue(5)
+
+    # Failing dequeue on empty queue
+    cq.dequeue()
+
+    cq.enqueue(10)
+    cq.enqueue(20)
+    cq.enqueue(30)
+    cq.enqueue(40)
+    cq.enqueue(50)
+
+    # Fails to enqueue because queue is full
+    cq.enqueue(60)
+
+    cq.display()
+
+    print(f"Deleted element -> {cq.dequeue()}")
+
+    cq.display()
+
+    cq.enqueue(60)
+    cq.display()
 
 gcc circular_queue.c -o circular_queue
 Then:
