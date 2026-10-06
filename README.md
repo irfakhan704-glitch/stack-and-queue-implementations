@@ -197,6 +197,7 @@ Source Code
 The complete program is available in:
 
 Q2_Circular_Queue/circular_queue.c
+Circular Queue is an extended version of a regular queue that connects the last position back to the first position to form a circle, efficiently utilizing wasted memory space.
 
 How to Compile and Run
 Stack
