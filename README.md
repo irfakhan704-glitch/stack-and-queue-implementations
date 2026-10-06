@@ -141,6 +141,57 @@ After removing the first three elements:
 The first three positions are unused, but rear is already at the last index.
 
 In a simple linear array implementation, another element cannot be inserted even though free positions exist at the beginning. This is the false overflow / wasted-space problem that a circular queue avoids.
+python
+class MyStack:
+    def __init__(self, size: int):
+        self.capacity = size
+        # Pre-allocate array with None to simulate a fixed-size array
+        self.arr = [None] * size
+        self.top = -1  # -1 indicates that the stack is initially empty
+
+    def push(self, x: int) -> None:
+        if self.is_full():
+            print(f"Stack Overflow! Cannot push {x}")
+            return
+        self.top += 1
+        self.arr[self.top] = x
+        print(f"Pushed: {x}")
+
+    def pop(self) -> int:
+        if self.is_empty():
+            print("Stack Underflow! Cannot pop.")
+            return -1
+        popped_element = self.arr[self.top]
+        self.arr[self.top] = None  # Optional: Clear the reference
+        self.top -= 1
+        return popped_element
+
+    def peek(self) -> int:
+        if self.is_empty():
+            print("Stack is empty.")
+            return -1
+        return self.arr[self.top]
+
+    def is_empty(self) -> bool:
+        return self.top == -1
+
+    def is_full(self) -> bool:
+        return self.top == self.capacity - 1
+
+
+# Driver code to demonstrate the stack behavior
+if __name__ == "__main__":
+    stack = MyStack(3)  # Create a stack of size 3
+
+    stack.push(10)
+    stack.push(20)
+    stack.push(30)
+    stack.push(40)  # Triggers Stack Overflow
+
+    print("Top element is:", stack.peek())
+
+    print("Popped element:", stack.pop())
+    print("Top element after pop:"
 
 Source Code
 The complete program is available in:
