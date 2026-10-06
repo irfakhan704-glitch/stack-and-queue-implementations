@@ -16,6 +16,11 @@ Theory
 A stack is a linear data structure that follows the LIFO (Last In, First Out) principle. The element inserted last is the first element to be removed.
 
 In an array implementation, a variable called top keeps track of the top element of the stack.
+• push(x): Adds element x to the top of the stack.
+• pop(): Removes and returns the top element.
+• peek() or top(): Returns the top element without removing it.
+• isEmpty(): Returns true if the stack contains no elements.
+• isFull(): Returns true if the array capacity is maxed out.
 
 Initially:
 
